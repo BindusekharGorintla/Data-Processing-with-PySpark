@@ -1,0 +1,23 @@
+Small File Problem:
+
+Use autoOptimize:
+
+optimizeWrite:Writes data into well-sized files instead of many small ones
+autoCompact:Merges small files into larger ones in the background
+
+spark.conf.set("spark.databricks.delta.autoOptimize.optimizeWrite", "true")
+
+spark.conf.set("spark.databricks.delta.autoOptimize.autoCompact", "true")
+
+Create a Partitioned Table:
+
+CREATE TABLE member ( mem_id STRING, name STRING, npi STRING, DOB DATE, state string ) 
+USING DELTA PARTITIONED BY (state);
+
+Repartition Before Write:
+Use repartition() to control the number of output files:
+df.repartition(10).write.format("parquet").save("/path")
+
+Coalesce for Narrow Transformations
+Use coalesce() to reduce partitions without full shuffle:
+df.coalesce(5).write.format("delta").save("/path")
