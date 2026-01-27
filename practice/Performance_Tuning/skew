@@ -1,0 +1,13 @@
+Data Skew is unavoidable, Databricks handles this automatically
+
+With Adaptive Query Execution Spark
+automatically breaks down larger
+partitions into smaller, similar sized
+partitions.
+Adaptive Query Execution (enabled by default in Spark 3.1)
+Filter skewed values
+Databricks’ [proprietary] Skew Hint
+• Easier to add a single hint than to salt your keys
+• Great option for version of Spark 2.x
+salting
+use AQE
