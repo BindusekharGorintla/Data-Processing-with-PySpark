@@ -1,0 +1,19 @@
+Spill is the term used to refer to the act of moving
+data from RAM to disk, and later back into RAM again
+This occurs when a given partition is simply too large to fit into RAM
+Spill - Examples
+● Set spark.sql.files.maxPartitionBytes too high (default is 128 MB)
+● The explode() of even a small array
+● The join() or crossJoin() of two tables which generates lots of new
+rows
+● The join() or crossJoin() of two tables by a skewed key
+The groupBy() where the column has low cardinality
+● The countDistinct() and size(collect_set())
+● Setting spark.sql.shuffle.partitions too low or wrong use of
+repartition()
+Spill - Mitigations
+● Allocate cluster with more RAM per Core
+● Address data skew
+● Manage size of Spark partitions
+● Avoid expensive operations like explode()
+● Reduce amount data preemptively whenever possible
