@@ -1,0 +1,7 @@
+Shuffle is a Spark mechanism that redistributes data so that it's grouped differently across partitions. 
+This typically involves copying data across executors and machines and, while it's sometimes necessary, 
+it can be a complex and costly operation
+
+broadcast join
+shuffle hash join
+sort merge join
