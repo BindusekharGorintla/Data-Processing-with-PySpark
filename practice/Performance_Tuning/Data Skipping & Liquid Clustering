@@ -1,0 +1,17 @@
+Data Skipping & Liquid Clustering
+
+
+spark.conf.set("spark.databricks.io.skipping.metrics.enabled", "true")
+
+Data Skipping is a performance optimization technique used in big data systems (like Databricks Delta Lake, Parquet,
+ ORC) to avoid scanning irrelevant data blocks during queries. It’s essentially an I/O pruning method — instead of reading every file or row, 
+the engine “skips” over files/blocks that don’t match the query filter.
+
+Z-ordering
+
+
+Liquid Clustering
+
+Table Statistics
+
+Predictive Optimization
