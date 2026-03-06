@@ -1,0 +1,13 @@
+What Is a Window Function?
+A window function:
+Performs calculations across a set of rows related to the current row WITHOUT reducing the number of rows.
+That's the key difference from groupBy.
+
+#RealWorld Scenario (Healthcare Domain)
+You work for a hospital analytics team.
+
+#Businessneeds:
+1. Rank patients by treatment cost per hospital
+2. Running total of cost per patient
+3. Identify latest visit per patient
+4. Detect repeated visits within 7 days.
