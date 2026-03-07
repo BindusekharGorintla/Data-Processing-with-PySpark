@@ -1,0 +1,8 @@
+Salting:
+
+Salting is data skew handling technique when one partition have more data which cause to performance issues
+
+Suppose in Join, groupby if one executor gets overloaded and others stay idle, bob will be slow or fails due to out of memory issues
+
+Add salt to skewed dataframe
+

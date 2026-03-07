@@ -1,0 +1,32 @@
+Shuffle Joins:
+
+Shuffle Join happens when spark needs to redistribute data across executors before performing join
+
+Usecase:
+If Both Dataframes are large
+
+Shuffle Sort Merge Join:
+
+Both sided sorted by join key
+
+Default for large datasets
+
+Shuffle hash Join:
+
+Builds hash table after shuffle
+Used when one side is moderately small
+
+Performance Optimization for Shuffle join:
+
+repartition on join key
+df1 = df.repartition("id)
+
+Handle data skew:
+Use salting technique
+Use skew join hints(Databricks feature)
+
+Adjust Shuffle Parttions:
+
+Tune it based on cluster size
+
+

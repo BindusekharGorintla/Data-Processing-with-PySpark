@@ -1,0 +1,23 @@
+Spark SQL Engine: 
+
+When developer writes the code spark optimize and send to executor, develop physical and logical plan
+
+
+Unresolved Logical Plan:
+
+perform small analysis all columns avalible in catalog
+
+Resolved Logical Plan:
+
+If all good It will create reolved logical plan
+
+Optimized Logical Plan:
+
+It will create Optimized Logical Plan
+
+Physical Plan:
+
+it will apply whether which type of join will be determined by physical plan
+
+It will use cost model. It will generate the best physical plan and will go to executor.
+
