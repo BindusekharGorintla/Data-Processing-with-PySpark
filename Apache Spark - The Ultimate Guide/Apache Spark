@@ -1,0 +1,15 @@
+Apache Spark: Apache Spark is open source distributed computing framework for big data processing
+
+Why:
+
+Monotholic: - ugrading single machine eg: adding ram or cores
+            - vertical scaling
+Distributed: - Add more machines or nodes
+             - horizantal scaling
+             - High Variability
+
+Advantages:
+In memory Computation
+Lazy Evaluation
+Fault Tolerant
+Partioning
