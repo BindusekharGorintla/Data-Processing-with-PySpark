@@ -1,0 +1,10 @@
+Broad cast Join:
+
+A Broad cast join is spark optimization technique where smaller dataframe is sent to all worker nodes, so spark avoid shuffling
+
+
+Driver will pass the look up table to all executors
+Make sure the table has to fit in Driver and Executor Memory
+
+
+

@@ -1,0 +1,48 @@
+Apache Spark: Apache Spark is open source distributed computing framework for big data processing and machine learning
+
+It follows Master Slave Architecture, one master and all slaves
+master: passing orders
+Slaves: will be doing work
+
+Driver:
+Its Brain of Spark, Creates sparkSession
+Converts pyspark code into: Logical plan, Physical Plan and DAG
+Sends tasks to executors
+colects results
+
+Cluster Manager: The Cluster Manager assigns resources.
+Responsible of allocationg resources(CPU & Memory)
+
+Workers:
+
+Machines in the Clusters: 
+
+Each Machine runs Executors
+
+Executors:
+
+Executors on worker nodes run the tasks in parallel.
+
+Each Executor has CPU & Memory
+
+Results are sent back to the Driver.
+
+
+Task:
+Smallest unit of work
+one task = One partition processing
+Task runs inside the executor
+
+When you write code:
+
+Notebook sends your code(transformations and actions) to driver
+Driver creates a logical plan
+It optimises the plan using catalyst optimizer
+Then logical plan turns to physical plan which is basically set of tasks.
+dag scheduler splits into
+  Jobs
+  stages
+  tasks
+The driver sends the tasks to executors by cluster
+Tasks run in parallel on executors.
+Once tasks completed the results are shared to driver.

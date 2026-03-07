@@ -1,0 +1,15 @@
+AQE: Adaptive Query Execution
+
+Dynamically Coalesce the partitions:
+spark default partitions 200: I will simply coalesce partitions
+
+Optimize the join strategy during Run Time:
+Based on data statistics, it will dynamically optimizes query plans at runtime
+
+Dynamically optimizing skewness:
+
+
+spark.conf.set("spark.sql.adaptive.enabled",true)
+
+
+

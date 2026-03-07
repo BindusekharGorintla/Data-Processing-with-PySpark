@@ -1,0 +1,11 @@
+Hadoop Mapreduce: 
+It is also following distuributing computing engine:
+Map: - map is responsible to distribute the data to machine
+Reduce: - Reduce will gather data from machine
+The intermediate result like transformations will be stored in disk, its time taking to and from disk
+It is slower
+
+Apache Spark: 
+In Memory processing: RAM, Write intermediate result like transformations to RAM
+It is faster
+
