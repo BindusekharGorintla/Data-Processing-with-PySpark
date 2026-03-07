@@ -1,0 +1,6 @@
+Partition: 
+When you process data in Apache Spark, Sprak divides  the data into mltiple chunks called paritions, each partition is proceesed parallel by different executors
+
+df.rdd.getNUMPartitions()
+ 
+ Default Partition Size: 128 MB

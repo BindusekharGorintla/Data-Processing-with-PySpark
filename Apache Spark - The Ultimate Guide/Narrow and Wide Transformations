@@ -1,0 +1,12 @@
+Narrow and Wide Transformations:
+
+Narrow: Filter, select, map
+
+The transformation of each output partition  depends on only single partition
+
+No shuffle happens
+
+Wide: Groupby, join, distinct
+
+it involves shuffle, since data is redistributed across partitions, creates a new stage in DAG
+

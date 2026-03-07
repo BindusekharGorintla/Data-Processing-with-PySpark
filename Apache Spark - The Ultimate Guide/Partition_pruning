@@ -1,0 +1,40 @@
+partition pruning:
+
+Optimization technique while writing to table
+
+df.write.partitionBY("column_name).fomat("delta").mode("overwrite").saveAsTable("table_name)
+
+Skipping unnecessary partitions while reading data based on filter conditions
+Avoid scanning unnecessary partitions when working with large partitioned datasets
+
+Static Partition Pruning:
+
+df= df.filter("year==2018")
+
+Dynamic Partition Pruning:
+
+dynamic pruning determines partitions at runtime based on the results of another query or join.
+
+Happens during run time joins
+
+When is Dynamic Partition Pruning Useful?
+Large Fact Table with Small Dimension Table: Especially beneficial when querying large partitioned tables (e.g., in ETL pipelines) where only a small subset of partitions needs to be read based on filtering.
+
+Join Conditions: Optimized for cases where the filtering conditions are based on values from a join (dynamic join conditions).
+
+Partitioned Tables: Tables must be partitioned for partition pruning to apply.
+
+spark.conf.set("spark.sql.optimizer.dynamicPartitionPruning.enabled", "true")
+
+https://www.linkedin.com/pulse/pyspark-dynamic-partition-pruning-soutir-sen-7egtf/
+
+How Dynamic Partition Pruning Optimizes the Query
+
+Before Execution: Spark does not know which partitions of the sales table to read since the filtering condition (category == 'Electronics') is applied to the products table, which is joined later.
+
+During Execution: When the join condition is evaluated, Spark dynamically determines which partitions from the sales table match the filter condition and prunes the irrelevant partitions.
+
+Result: Only partitions containing data related to Electronics products are read and processed, improving query performance.
+
+Query Plan Analysis
+

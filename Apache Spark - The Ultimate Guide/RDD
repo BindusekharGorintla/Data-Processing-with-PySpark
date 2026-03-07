@@ -1,0 +1,15 @@
+RDD: Resilient Distributed Dataset
+
+RDD is the basic Fundamental data structure of Apache Spark
+low level transformations - RDD
+
+
+Resilient - Fault- Tolerant(can Recover using Lineage)
+Distributed - Stored across multiple nodes in cluster
+Dataset - collect of data
+
+It is immutable distributed collection of objects can be processed in parallel across spark cluster
+
+
+If I write Data frame it will be converted to RDD
+

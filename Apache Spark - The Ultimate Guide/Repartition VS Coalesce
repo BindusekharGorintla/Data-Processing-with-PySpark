@@ -1,0 +1,9 @@
+Repartition VS Coalesce:
+
+Repartition: Increase or decrease partition count, perfoem full shuffle
+
+df = df.repartition(100)
+
+Coalesce: only decrease partition, no shuffle
+
+df = df.Coalesce(100)
