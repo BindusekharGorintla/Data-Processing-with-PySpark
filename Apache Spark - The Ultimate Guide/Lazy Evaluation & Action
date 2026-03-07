@@ -1,0 +1,9 @@
+Lazy Evaluation & Action:
+Spark is Lazy Evaluated
+
+Spark will store all transformations in a plan, only execute the plan when you execute action
+
+Spark will rearrange transformation and when action called will execute plan
+it will run with optimized plan
+
+It will create Job: will have all tranformations

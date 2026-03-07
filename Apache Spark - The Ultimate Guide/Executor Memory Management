@@ -1,0 +1,25 @@
+Exceutor Memory Management : 
+
+JVM Heap Memory:
+
+OFF- heap memory:
+Default to 0, will not be handled by JVM
+
+Overhead Memory:
+10% of memory
+
+Pyspark memory:
+Default to 0, will not be handled by JVM
+
+Common Executor OOM causes:
+large Shuffle Join
+Skewed data
+to many cached dataframes
+Large Broadcast join
+
+Best Practices:
+
+Right partition size
+Aviod wide transformations
+use AQE
+optimize delta tables

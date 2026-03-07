@@ -1,0 +1,15 @@
+Executor Out Of Memory:
+When more shuffles and skewed data.
+
+Large shuffles:
+data skew
+Improper partitioning
+caching huge data
+
+
+Fixing: 
+
+Increase executor memory
+Increase partitions
+Handle data skew(salting, broadcasting)
+Enable AQE

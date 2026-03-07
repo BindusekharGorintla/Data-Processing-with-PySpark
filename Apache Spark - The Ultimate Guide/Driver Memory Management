@@ -1,0 +1,25 @@
+Driver Memory Management:
+
+Driver in spark is the master that coridnates all tasks
+
+It holds metadata, task scheduling info, DAGs and more
+
+Driver memory = Memory allocated to the driver process ehen spark job runs
+
+If driver runs out of memory job -> fails with outof memoryerror
+
+JVM Heap Memory: 
+
+DAG, Metadata, Broadcast variables, Task scheduling info
+
+Over Head memory: 
+
+Non Jvm tasks like shared libraries and others
+
+
+Driver Out of memory:
+
+large Braod cast variable
+df.collect()
+df.topandas()
+Too many partitions

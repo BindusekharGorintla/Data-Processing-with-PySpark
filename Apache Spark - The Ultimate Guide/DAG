@@ -1,0 +1,20 @@
+DAG: Directed Acyclic Graph
+
+It is the execution plan that spark builds when you run transformations on RDD or Dataframes
+
+Directed- Data flows in one direction
+Acyclic- No loops
+Graph - Nodes connected by edges
+
+DAG Execution Flow:
+
+When you run code
+
+Driver Program
+Dag is created
+dag scheduler splits into
+  stages
+  tasks
+Tasks run in parallel on executors.
+
+

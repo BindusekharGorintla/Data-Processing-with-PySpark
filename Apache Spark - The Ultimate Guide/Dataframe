@@ -1,0 +1,24 @@
+Dataframe:
+
+Distributed collection of data organized into rows and columns with schema, similar to table in SQL or pandas dataframe, but processed in distributed way. It is High level API
+
+Schema based
+Optimized Execution - Uses Catalyst Optimizer + Tungsten Engine
+
+Data frame - 
+Structured
+Schema Based
+Catalyst Optimizer
+Faster
+Supports SQL
+
+RDD:
+Unstructured
+No Schema
+No Optimization
+Slower
+No SQL
+
+
+
+
