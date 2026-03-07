@@ -1,0 +1,105 @@
+Bucketing:
+Bucketing is performance optimization technique used to organize data into fixed number of buckets (files) based on column hash.
+It helps joins and aggregations to reduce shuffle
+
+Bucketing divides data into fixed number of buckets using hash function on columnn
+
+
+What Is Partitioning?
+Partitioning in Spark (Data Lake context) means:
+Physically organizing data into folder structure based on column values.
+hashtag#Example:
+If partitioned by order_date, data stored like:
+/orders/
+ order_date=2026-02-01/
+ order_date=2026-02-02/.
+
+
+hashtag#Why Partition?
+Main purpose:
+Enable partition pruning
+Reduce data scanned
+Improve query performance
+Lower storage I/O cost.
+
+hashtag#ExampleScenario (Retail Domain)
+Orders table:
+1 Billion records
+Analysts query mostly by date
+Query:
+
+SELECT * FROM orders WHERE order_date = '2026-02-01'
+
+Without partitioning:
+Full table scan.
+With partitioning:
+Only that folder read.
+Huge performance gain.
+
+hashtag#How to Write Partitioned Data in PySpark?
+df.write \
+ .mode("overwrite") \
+ .partitionBy("order_date") \
+ .parquet("s3://data-lake/silver/orders/")
+
+hashtag#Partition Pruning (Very Important)
+When you filter:
+df.filter(col("order_date") == "2026-02-01")
+
+
+hashtag#Spark:
+Skips all other partitions
+Reads only matching folder
+Check using:
+df.explain(True)
+
+Look for:
+PartitionFilters.
+
+What Is Bucketing?
+Bucketing is:
+Distributing data into fixed number of buckets using hash function.
+Unlike partitioning:
+Does not create folder hierarchy
+Creates fixed number of files
+
+Why Bucketing?
+Main use case:
+Optimize joins
+Avoid shuffle during joins.
+Improve fact-to-fact join performance.
+
+
+hashtag#How Bucketing Works
+Example:
+Bucket by customer_id into 8 buckets.
+Spark:
+Hash(customer_id) % 8
+Writes into 8 fixed buckets
+
+If two tables:
+Bucketed by same key.
+Same number of buckets.
+Spark can skip shuffle join.
+
+hashtag#ExampleBucketingCode:
+df.write \
+ .bucketBy(8, "customer_id") \
+ .sortBy("customer_id") \
+ .mode("overwrite") \
+ .saveAsTable("bucketed_orders")
+
+
+
+hashtag#End-to-End Example (Retail Optimization)
+Step 1:
+ Partition by order_date
+Step 2:
+ Repartition before write
+
+df.repartition(200).write \
+ .partitionBy("order_date") \
+ .parquet("path")
+
+Step 3:
+ Use Delta OPTIMIZE later.

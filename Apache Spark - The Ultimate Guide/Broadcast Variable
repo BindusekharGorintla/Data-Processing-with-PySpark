@@ -1,0 +1,7 @@
+ Broadcast Variable:
+
+Spark has two tpes of variables:
+Broadcast Variable
+Accumulators
+
+A Broad cast variable is a way to effienctly share a small raed only dataset across exceutors, will cache the data in executors

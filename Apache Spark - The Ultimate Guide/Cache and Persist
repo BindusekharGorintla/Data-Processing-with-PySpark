@@ -1,0 +1,109 @@
+Cache and Persist :
+
+Cache: Will store intermediate reults in memomory
+If you are using df agaian and again use cache will improve performance
+Dont use for larger  tables check whethher it will fit in memory
+df.cache()
+
+
+Persist:
+Persist is sams as cache but we can add memory location
+df.persist(storagelocation.memeory_and_disk)
+Tries to store data in memory fist and if data not enough in memory will spill to disk.
+
+Storge Levels:
+Memory_and_disk
+memory_only
+disk_only
+memory_only_2
+experimental
+
+once cache or persist df unpersist
+df.unpersist()
+
+
+Caching is a critical Spark optimization technique.
+It improves performance when the same dataset is reused multiple times in a pipeline.
+Without caching → Spark recomputes the entire DAG repeatedly.
+Understanding when and how to cache is a very common interview topic.
+
+#CoreConcept
+Spark follows lazy evaluation.
+When you run transformations:
+
+df.filter().groupBy().join()
+
+Spark does not execute immediately.
+Execution happens only when an action is triggered:
+show()
+count()
+write()
+collect()
+If the same DataFrame is used again, Spark recomputes it from the source unless cached.
+
+
+#Why Caching Is Needed
+Consider this pipeline:
+Read large dataset
+Clean data
+
+Use it for:
+Aggregations
+Joins
+ML training
+Data quality checks
+
+#Withoutcaching:
+Spark recomputes step 1 & 2 every time.
+Caching stores intermediate data in memory (or disk).
+
+
+#WithoutCaching (Recomputation)
+Pipeline example:
+
+Raw → Filter → Clean → Join → Aggregate
+
+If reused:
+
+Raw → Filter → Clean → Join
+Raw → Filter → Clean → Aggregate
+
+Spark re-runs Raw → Filter → Clean again.
+
+
+#WithCaching
+Pipeline becomes:
+
+Raw → Filter → Clean → CACHE
+                        ↓
+                    Join
+                    Aggregate
+
+Spark reuses cached dataset.
+
+Types of Persistence Levels
+Spark supports multiple storage levels.
+
+1.MEMORY_ONLY (Default)
+
+df.cache()
+
+Data stored only in memory.
+Fastest but may cause recomputation if memory insufficient.
+
+2. MEMORY_AND_DISK
+
+df.persist(StorageLevel.MEMORY_AND_DISK)
+
+If memory full → spill to disk.
+Safer for large datasets.
+
+3. DISK_ONLY
+Stores only on disk.
+Rarely used but useful when memory limited.
+
+4. MEMORY_ONLY_SER
+Stores serialized objects.
+Uses less memory but slightly slower.
+
+
