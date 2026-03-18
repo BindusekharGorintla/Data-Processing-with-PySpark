@@ -17,4 +17,90 @@ dag scheduler splits into
   tasks
 Tasks run in parallel on executors.
 
+If you want to truly understand how Spark works internally, you need to understand DAG.
 
+This is one of the most important concepts for interviews and performance tuning.
+
+⸻
+
+What is DAG?
+
+A DAG (Directed Acyclic Graph) is a logical execution plan created by Spark.
+
+It represents how your data transformations are connected and executed.
+	•	Directed → Flow has a direction (start → end)
+	•	Acyclic → No loops (no infinite cycles)
+	•	Graph → Nodes (operations) + Edges (data flow)
+
+⸻
+
+How Spark Uses DAG
+
+When you write PySpark code:
+
+df = spark.read.csv("data.csv")
+
+df1 = df.filter(df.age > 25)
+
+df2 = df1.groupBy("city").count()
+
+df2.show()
+
+What happens internally?
+
+1️⃣ Spark records transformations
+2️⃣ Builds a DAG (logical plan)
+3️⃣ Optimizes using Catalyst Optimizer
+4️⃣ Splits into stages
+5️⃣ Executes tasks across executors
+
+Read Data
+   ↓
+Filter (Transformation)
+   ↓
+GroupBy (Transformation)
+   ↓
+Action (Trigger)
+   ↓
+Execution Starts
+
+DAG Components
+
+🔹 Nodes
+
+Each operation (filter, map, groupBy)
+
+🔹 Edges
+
+Flow of data between operations
+
+🔹 Stages
+
+Grouped tasks separated by shuffle boundaries
+
+⸻
+
+Why DAG is Important
+
+✅ 1. Optimized Execution
+
+Spark analyzes the full workflow before execution
+
+✅ 2. Better Performance
+
+Reduces unnecessary computations
+
+✅ 3. Fault Tolerance
+
+If a task fails, Spark recomputes only that part using DAG
+
+⸻
+Interview Point :
+
+👉 Spark does not execute step-by-step like traditional systems
+
+Instead, it:
+
+✔ Builds DAG
+✔ Optimizes it
+✔ Executes efficiently in parallel
