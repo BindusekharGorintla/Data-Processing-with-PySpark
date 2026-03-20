@@ -1,6 +1,7 @@
 AQE: Adaptive Query Execution
 Introduces in Spark 3.0 
 It will choose the most efficient query plan during run time
+spark.conf.set("spark.sql.adaptive.enabled",true)
 
 Dynamically Coalesce the partitions:
 spark default partitions 200: I will simply coalesce partitions. It will reduce shuffle partitions
@@ -11,5 +12,7 @@ sort merge join - broad cast join
 
 Dynamically optimizing skewness:
 convert skewed partitions into smaller partitions
+spark.conf.set("spark.sql.adaptive.skewJoin.enabled", true)
+Skewed join problem: When joining two large tables, some keys may have disproportionately more rows than others. This causes uneven distribution of work across tasks, leading to performance bottlenecks.
 
-spark.conf.set("spark.sql.adaptive.enabled",true)
+Setting to true: Spark detects skewed partitions during runtime and automatically splits them into smaller chunks. This balances the workload across tasks and improves query performance.
