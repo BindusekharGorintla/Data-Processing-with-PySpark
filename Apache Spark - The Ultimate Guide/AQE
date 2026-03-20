@@ -13,6 +13,8 @@ sort merge join - broad cast join
 Dynamically optimizing skewness:
 convert skewed partitions into smaller partitions
 spark.conf.set("spark.sql.adaptive.skewJoin.enabled", true)
-Skewed join problem: When joining two large tables, some keys may have disproportionately more rows than others. This causes uneven distribution of work across tasks, leading to performance bottlenecks.
+Skewed join problem: When joining two large tables, some keys may have disproportionately more rows than others. 
+This causes uneven distribution of work across tasks, leading to performance bottlenecks.
 
-Setting to true: Spark detects skewed partitions during runtime and automatically splits them into smaller chunks. This balances the workload across tasks and improves query performance.
+Setting to true: Spark detects skewed partitions during runtime and automatically splits them into smaller chunks.
+This balances the workload across tasks and improves query performance.
