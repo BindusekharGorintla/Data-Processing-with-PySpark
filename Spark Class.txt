@@ -15,7 +15,7 @@ SPARK  = Python + sql = Pyspark
 	2. Real-Time Steam processing 
 	3. Machine Learning workloads
 	
-Key Featues in Spark :
+Key Featues in Spark 
 ========================
 1. In-Memory Processing :
 2. Distributed computing :
