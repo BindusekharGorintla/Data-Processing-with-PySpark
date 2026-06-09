@@ -1,4 +1,4 @@
-Apache SPARK  = Python + sql = Pyspark 
+SPARK  = Python + sql = Pyspark 
 =================================
 -> It is introduced in 2012 by apache spark foundation
 -> Initial version is released in may 2014 as Spark  1.0.0
