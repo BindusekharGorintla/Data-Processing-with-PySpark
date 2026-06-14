@@ -701,7 +701,7 @@ dsteam :
 	ssc.queueStream(list[rdd1,rdd2,rdd3])
 
 
-AQE:
+AQE: Adaptive
 
 
 
